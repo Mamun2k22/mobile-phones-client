@@ -1,26 +1,24 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
+import { setAuthToken } from '../hooks/useToken';
+
 
 const SignUp = () => {
-    const { providerLogin, googleSignIn } = useContext(AuthContext);
+    const { googleSignIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { createUser, updateUser } = useContext(AuthContext);
     const [signupError, setSignupError] = useState('')
-    const [createUserEmail, setCreateUserEmail] = useState('');
-
-    // Google
     const googleProvider = new GoogleAuthProvider();
 
-    // const [token] = useToken(createUserEmail);
+
+
     const navigate = useNavigate();
 
-    // if (token) {
-    //     navigate('/')
-    // }
+
     const handleSignup = (data) => {
         console.log(data);
         setSignupError('');
@@ -28,7 +26,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast('User Created Successfully')
+                toast.success('User Created Successfully')
 
                 // Update User
                 const userInfo = {
@@ -57,13 +55,13 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setCreateUserEmail(email);
+
+                setAuthToken(email)
+                navigate('/')
 
             })
     }
-    const getUserToken = email => {
 
-    }
     // Google Sign IN
     const handleGoogleSignIn = () => {
         googleSignIn(googleProvider)
