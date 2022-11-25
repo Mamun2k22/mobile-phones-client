@@ -14,6 +14,7 @@ const Navbar = () => {
     const menuItems = <React.Fragment>
 
         <li className='btn btn-secondary text-white mr-3'><Link to={'/'}>Home</Link></li>
+        <li className='btn btn-secondary text-white mr-3'><Link to={'/category'}>Category</Link></li>
         <li className='btn btn-secondary text-white mr-3'><Link to={'/signup'}>Signup</Link></li>
         <li className='btn btn-secondary text-white mr-3'><Link to={'/blog'}>Blog</Link></li>
 

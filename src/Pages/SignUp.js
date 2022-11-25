@@ -1,13 +1,20 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const SignUp = () => {
+    const { providerLogin, googleSignIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { createUser, updateUser } = useContext(AuthContext);
     const [signupError, setSignupError] = useState('')
     const [createUserEmail, setCreateUserEmail] = useState('');
+
+    // Google
+    const googleProvider = new GoogleAuthProvider();
+
     // const [token] = useToken(createUserEmail);
     const navigate = useNavigate();
 
@@ -21,7 +28,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                alert('User Created Successfully')
+                toast('User Created Successfully')
 
                 // Update User
                 const userInfo = {
@@ -57,6 +64,16 @@ const SignUp = () => {
     const getUserToken = email => {
 
     }
+    // Google Sign IN
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
+    }
+
     return (
         <div className='h-[800px] flex justify-center justify-items-center'>
             <div className='w-96 p-7' >
@@ -89,7 +106,7 @@ const SignUp = () => {
                 </form>
                 <p className='mt-2 '>Already have an account <Link to={'/login'} className='text-secondary'>Please login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full '>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full '>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
