@@ -1,22 +1,37 @@
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
-    // const handleLogout = () => {
-    //     logOut()
-    //         .then(() => { })
-    //         .catch(error => console.log(error))
-    // }
+    const menuItems = <React.Fragment>
 
-    const menuItems = <>
         <li className='btn btn-secondary text-white mr-3'><Link to={'/'}>Home</Link></li>
-
         <li className='btn btn-secondary text-white mr-3'><Link to={'/signup'}>Signup</Link></li>
-        <li className='btn btn-secondary text-white'><Link to={'/login'}>Login</Link></li>
+        <li className='btn btn-secondary text-white mr-3'><Link to={'/blog'}>Blog</Link></li>
 
 
-    </>
+        {
+            user?.uid ?
+                <>
+                    <li><Link to={'/profile'}>Profile</Link></li>
+                    <li><button className='btn btn-primary rounded-md text-white' onClick={handleLogout}>Sign Out</button></li>
+                </>
+                : <li className='btn btn-secondary text-white'><Link to={'/login'}>Login</Link></li>
+
+
+        }
+
+
+
+    </React.Fragment>
 
     return (
         <div className="navbar bg-base-100 flex justify-between ">
