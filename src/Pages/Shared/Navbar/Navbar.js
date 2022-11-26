@@ -31,7 +31,13 @@ const Navbar = () => {
                     <li><Link to={'/profile'}>Profile</Link></li>
                     <li><button className='btn btn-primary rounded-md text-white' onClick={handleLogout}>Sign Out</button></li>
                 </>
-                : <li className='btn btn-secondary text-white'><Link to={'/login'}>Login</Link></li>
+                :
+
+                <>
+                    <li className='btn btn-secondary text-white'><Link to={'/login'}>Login</Link></li>
+                    <li className='btn btn-secondary text-white'><Link to={'/signup'}>SignUp</Link></li>
+
+                </>
 
 
         }

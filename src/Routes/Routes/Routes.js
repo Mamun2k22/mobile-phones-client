@@ -3,14 +3,18 @@ import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
 import Blog from '../../Pages/Blog';
 import Category from '../../Pages/Category/Category';
+import AllBuyer from '../../Pages/Dashboard/AllBuyer';
+import AllSeller from '../../Pages/Dashboard/AllSeller';
 import AllUsers from '../../Pages/Dashboard/AllUsers/AllUsers';
-import Dashboard from '../../Pages/Dashboard/Dashboard/Dashboard';
+import MyOrder from '../../Pages/Dashboard/Dashboard/MyOrder';
+import AddProduct from '../../Pages/Dashboard/MyProducts/AddProduct';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login';
-import Products from '../../Pages/Products';
 import Profile from '../../Pages/Profile/Profile';
 import SignUp from '../../Pages/SignUp';
 import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
+import Products from '../../Pages/Products'
+import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts'
 // import AdminRoutes from '../AdminRoutes/AdminRoutes';
 // import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 
@@ -59,12 +63,33 @@ const router = createBrowserRouter([
 
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <MyOrder></MyOrder>
+            },
+            {
+                path: '/dashboard/myorder',
+                element: <MyOrder></MyOrder>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <MyProducts></MyProducts>
             },
             {
                 path: '/dashboard/allusers',
                 element: <AllUsers></AllUsers>
-            }
+            },
+            {
+                path: '/dashboard/addproducts',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/allbuyer',
+                element: <AllBuyer></AllBuyer>
+            },
+            {
+                path: '/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            },
+
         ]
     }
 

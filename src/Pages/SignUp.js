@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
-import { setAuthToken } from '../hooks/useToken';
+// import { setAuthToken } from '../hooks/useToken';
 
 
 const SignUp = () => {
@@ -22,7 +22,7 @@ const SignUp = () => {
     const handleSignup = (data) => {
         console.log(data);
         setSignupError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.designation)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -34,7 +34,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email)
+                        saveUser(data.name, data.email, data.designation)
                     })
                     .catch(error => console.log(error))
             })
@@ -44,8 +44,8 @@ const SignUp = () => {
             });
 
     }
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, designation) => {
+        const user = { name, email, designation };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -56,7 +56,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
 
-                setAuthToken(email)
+                // setAuthToken(email)
                 navigate('/')
 
             })
@@ -88,6 +88,19 @@ const SignUp = () => {
                         <label className="label"><span className="label-text">Email</span></label>
                         <input type="text" {...register("email", { required: true })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                    </div>
+
+
+                    <div>
+                        <label className="label"> <span className="label-text">Please selected a role</span></label>
+                        <select
+                            type="text" {...register("designation", {
+                                required: "Its requires",
+                            })}
+                            className="select select-bordered w-full max-w-xs">
+                            <option selected>Buyer</option>
+                            <option>Seller</option>
+                        </select>
                     </div>
 
                     <div className="form-control w-full max-w-xs">

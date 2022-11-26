@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
+import useSellar from '../hooks/useSeller';
 // import useAdmin from '../hooks/useAdmin';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin(user?.email);
+    const [isAdmin] = useAdmin(user?.email);
+    const [isSellar] = useSellar(user?.email);
     return (
         <div>
             <Navbar></Navbar>
@@ -19,14 +22,28 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                        <li>
+                            <Link to='/dashboard/myorder'>My Order</Link>
+                        </li>
 
-                        <Link to="/dashboard">My Products</Link>
+
                         {
+                            isSellar &&
                             <>
-                                <Link to="/dashboard/allusers">All users</Link>
-                                <Link to="/dashboard/adddoctors">Add a Products</Link>
+
+                                <li><Link to='/dashboard/myproducts'>My Product</Link></li>
+                                <li> <Link to='/dashboard/addproducts'>Add a Product</Link></li>
                             </>
                         }
+                        {
+                            isAdmin &&
+                            <>
+                                <li><Link to="/dashboard/allusers">All Users</Link></li>
+                                <li><Link to='/dashboard/allseller'>All Seller</Link></li>
+                                <li><Link to='/dashboard/allbuyer'>All Buyer</Link></li>
+                            </>
+                        }
+
                     </ul>
 
                 </div>

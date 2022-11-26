@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const MyProducts = () => {
+const MyOrder = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/products?email=${user?.email}`
-    const { data: products = [] } = useQuery({
+    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -28,26 +28,25 @@ const MyProducts = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th>Delete</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
-                        {products &&
-                            products?.map((product, i) => <tr key={product._id}>
+                        {bookings &&
+                            bookings?.map((booking, i) => <tr key={booking._id}>
                                 <th>{i + 1}</th>
-                                <td>{product.name}</td>
-                                <td>{product.price}</td>
-                                <td>{product.date}</td>
-                                <td>{product.slot}</td>
+                                <td>{booking.number}</td>
+
+
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
         </div>
+
     );
 };
 
-export default MyProducts;
+export default MyOrder;
