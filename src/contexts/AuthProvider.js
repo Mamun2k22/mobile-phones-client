@@ -50,15 +50,25 @@ const AuthProvider = ({ children }) => {
 
     // UseEffect
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            // console.log("User Observing");
-            setUser(currentUser);
-            setLoading(false)
 
-        });
-        return () => unsubscribe()
-
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
+                fetch(`http://localhost:5000/user?email=${currentUser.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        data.uid = currentUser.uid
+                        setUser(data)
+                        setLoading(false);
+                    })
+            }
+            else {
+                setUser(null)
+                setLoading(false);
+            }
+        })
+        return () => unSubscribe();
     }, [])
+
 
     const authInfo = {
         createUser,

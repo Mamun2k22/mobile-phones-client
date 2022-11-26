@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
+import { setAuthToken } from '../hooks/useToken';
 // import { setAuthToken } from '../hooks/useToken';
 
 
@@ -18,34 +19,48 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
-
-    const handleSignup = (data) => {
-        console.log(data);
-        setSignupError('');
-        createUser(data.email, data.password, data.designation)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                toast.success('User Created Successfully')
-
-                // Update User
-                const userInfo = {
-                    displayName: data.name
-                }
-                updateUser(userInfo)
-                    .then(() => {
-                        saveUser(data.name, data.email, data.designation)
+    const handleSignUp = (data) => {
+        const photoURL = data.photoURL[0];
+        const formData = new FormData();
+        formData.append('photoURL', photoURL);
+        const url = 'https://api.imgbb.com/1/upload?key=85ac0d2a5403dea4afae0f1bd9591173'
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imageData => {
+                setSignupError('');
+                createUser(data.email, data.password, data.designation,)
+                    .then(result => {
+                        const user = result.user;
+                        toast.success('User Created Successfully.')
+                        navigate('/')
+                        const userInfo = {
+                            displayName: data.displayName,
+                        }
+                        updateUser(userInfo)
+                            .then(() => {
+                                saveUser(data.displayName, data.email, data.designation, imageData.data.photoURL.url)
+                            })
+                            .catch((error) => {
+                                toast.error(error.massage)
+                            });
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => {
+                        console.log(error)
+                        setSignupError(error.message)
+                    });
             })
-            .catch(err => {
-                console.log(err)
-                signupError(err.message)
-            });
 
-    }
-    const saveUser = (name, email, designation) => {
-        const user = { name, email, designation };
+            .catch(error => {
+                console.log(error)
+
+            });
+    };
+
+    const saveUser = (displayName, email, designation, photoURL) => {
+        const user = { displayName, email, designation, photoURL };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -55,12 +70,10 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-
-                // setAuthToken(email)
-                navigate('/')
-
+                setAuthToken(email)
+                navigate('/');
             })
-    }
+    };
 
     // Google Sign IN
     const handleGoogleSignIn = () => {
@@ -76,18 +89,25 @@ const SignUp = () => {
         <div className='h-[800px] flex justify-center justify-items-center'>
             <div className='w-96 p-7' >
                 <h2 className='text-xl text-center'>Signup Now</h2>
-                <form onSubmit={handleSubmit(handleSignup)} >
+                <form onSubmit={handleSubmit(handleSignUp)} >
 
                     {/* Just Form */}
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Name</span></label>
-                        <input type="text" {...register("name")} className="input input-bordered w-full max-w-xs" />
+                        <input type="text" {...register("displayName")} className="input input-bordered w-full max-w-xs" />
 
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Email</span></label>
                         <input type="text" {...register("email", { required: true })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Photo</span></label>
+                        <input type="file" {...register("photoURL", {
+                            required: "Photo is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                     </div>
 
 
