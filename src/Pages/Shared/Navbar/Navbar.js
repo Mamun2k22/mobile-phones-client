@@ -27,6 +27,7 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
+                    <li><Link to={'/dashboard'}>Dashboard</Link></li>
                     <li><Link to={'/profile'}>Profile</Link></li>
                     <li><button className='btn btn-primary rounded-md text-white' onClick={handleLogout}>Sign Out</button></li>
                 </>

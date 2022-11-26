@@ -10,8 +10,9 @@ import Login from '../../Pages/Login';
 import Products from '../../Pages/Products';
 import Profile from '../../Pages/Profile/Profile';
 import SignUp from '../../Pages/SignUp';
-import AdminRoutes from '../AdminRoutes/AdminRoutes';
 import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
+// import AdminRoutes from '../AdminRoutes/AdminRoutes';
+// import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <AdminRoutes> <AllUsers></AllUsers> </AdminRoutes>
+                element: <AllUsers></AllUsers>
             }
         ]
     }
