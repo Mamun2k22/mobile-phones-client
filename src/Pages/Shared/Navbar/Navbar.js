@@ -21,7 +21,7 @@ const Navbar = () => {
         <li className='btn btn-secondary text-white mr-3'><Link to={'/'}>Home</Link></li>
         <li className='btn btn-secondary text-white mr-3'><Link to={'/category'}>Category</Link></li>
         <li className='btn btn-secondary text-white mr-3'><Link to={'/signup'}>Signup</Link></li>
-        <li className='btn btn-secondary text-white mr-3'><Link to={'/blog'}>Blog</Link></li>
+        <li className='btn btn-secondary text-white mr-3'><Link to={'/blogs'}>Blog</Link></li>
 
 
         {
@@ -62,9 +62,7 @@ const Navbar = () => {
             <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
-            {/* <div className="navbar-end">
-                <a className="btn">Appointment</a>
-            </div> */}
+
         </div>
     );
 };
