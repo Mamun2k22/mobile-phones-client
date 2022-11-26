@@ -46,6 +46,7 @@ const SignUp = () => {
                             .catch((error) => {
                                 toast.error(error.massage)
                             });
+                        // handelEmailVeryfi()
                     })
                     .catch(error => {
                         console.log(error)

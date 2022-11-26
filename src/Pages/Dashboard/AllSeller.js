@@ -17,7 +17,7 @@ const AllSeller = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allseller?role=Seller')
+            const res = await fetch('http://localhost:5000/allseller?role=seller')
             const data = await res.json();
             return data;
         }
@@ -54,7 +54,7 @@ const AllSeller = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(` ${seller.name} deleted successfully`)
+                    toast.success(` ${seller.displayName} deleted successfully`)
                 }
             })
     };
@@ -81,7 +81,7 @@ const AllSeller = () => {
                         {
                             sellers.map((seller, i) => <tr key={seller._id}>
                                 <th>{i + 1}</th>
-                                <td>{seller.name}</td>
+                                <td>{seller.displayName}</td>
                                 <td>{seller.email}</td>
                                 <td>{seller?.verified !== true && <button onClick={() => handelMakeVerifide(seller._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td>
                                 <td>{seller?.designation}</td>
@@ -98,7 +98,7 @@ const AllSeller = () => {
 
                 <ConfirmationModal
                     title={`Are you sure you want to delete?`}
-                    message={`If you delete ${deletingSeller.DisplayName}. It cannot be undone.`}
+                    message={`If you delete ${deletingSeller.displayName}. It cannot be undone.`}
                     successAction={handleDeleteUser}
                     successButtonName="Delete"
                     modalData={deletingSeller}

@@ -1,27 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import ConfirmationModal from '../ConfirmationModal';
 
 const AllBuyer = () => {
 
     const [deletingBuyer, setDeletingBuyer] = useState(null);
-
+    const [buyers, setBuyers] = useState([]);
     const closeModal = () => {
         setDeletingBuyer(null);
     };
 
 
 
-    const { data: buyers = [], refetch } = useQuery({
-        queryKey: ['buyers'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allseller?role=Buyer')
-            const data = await res.json();
-            return data;
-        }
-    });
 
+    useEffect(() => {
+        axios.get('http://localhost:5000/allseller?role=buyer')
+            .then(data => {
+                const buyers = data.data;
+                setBuyers(buyers)
+            })
+    }, [])
 
 
     const handleDeleteUser = buyer => {
@@ -34,7 +33,6 @@ const AllBuyer = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    refetch();
                     toast.success(`${buyer.name} deleted successfully`)
                 }
             })
