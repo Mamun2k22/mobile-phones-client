@@ -15,12 +15,14 @@ import SignUp from '../../Pages/SignUp';
 import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 import Products from '../../Pages/Products'
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts'
+import Error from '../../Pages/Error';
 // import AdminRoutes from '../AdminRoutes/AdminRoutes';
 // import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
     {
         path: '/',
+        errorElement: <Error></Error>,
         element: <Main></Main>,
         children: [
             {
