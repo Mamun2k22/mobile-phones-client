@@ -49,6 +49,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, userInfo)
     }
 
+
     // UseEffect
     useEffect(() => {
 
@@ -81,8 +82,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         user,
         loading,
-        setRender,
-        setUser
+        setRender
 
     }
 

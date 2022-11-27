@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
@@ -10,7 +11,11 @@ import { AuthContext } from '../contexts/AuthProvider';
 
 const SingUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser, setRender, setUser } = useContext(AuthContext);
+    const { createUser, updateUser, setRender, setUser, googleSignIn, } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider();
+
+
     const [signUpError, setSignUPError] = useState('');
 
     const navigate = useNavigate()
@@ -80,6 +85,18 @@ const SingUp = () => {
     };
 
 
+    // Google Sign In
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('Error', error);
+            })
+    }
+
 
 
 
@@ -131,7 +148,7 @@ const SingUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full '>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full '>CONTINUE WITH GOOGLE</button>
                 {/* <Google></Google> */}
 
 

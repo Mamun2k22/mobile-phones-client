@@ -33,8 +33,8 @@ const AddProduct = () => {
                     const product = {
                         phoneName: data.phoneName,
                         location: data.location,
-                        resalePrice: parseInt(data.resalprice),
-                        marketPrice: parseInt(data.marketprice),
+                        resalePrice: (data.resalprice),
+                        marketPrice: (data.marketprice),
                         use: data.use,
                         condition: data.condition,
                         categoryName: data.categoryName,
