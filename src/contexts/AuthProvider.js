@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
 
     // Loading
     const [loading, setLoading] = useState()
+    const [render, setRender] = useState(false)
 
     // Sign UP
     const createUser = (email, password) => {
@@ -52,12 +53,15 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
 
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+            console.log(currentUser);
             if (currentUser) {
                 fetch(`http://localhost:5000/user?email=${currentUser.email}`)
                     .then(res => res.json())
                     .then(data => {
                         data.uid = currentUser.uid
                         setUser(data)
+
                         setLoading(false);
                     })
             }
@@ -67,8 +71,7 @@ const AuthProvider = ({ children }) => {
             }
         })
         return () => unSubscribe();
-    }, [])
-
+    }, [render])
 
     const authInfo = {
         createUser,
@@ -77,7 +80,9 @@ const AuthProvider = ({ children }) => {
         updateUser,
         logOut,
         user,
-        loading
+        loading,
+        setRender,
+        setUser
 
     }
 

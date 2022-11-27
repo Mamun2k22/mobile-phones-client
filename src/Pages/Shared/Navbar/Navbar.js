@@ -18,26 +18,26 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
 
-        <li className='btn btn-secondary text-white mr-3'><Link to={'/'}>Home</Link></li>
-        <li className='btn btn-secondary text-white mr-3'><Link to={'/category'}>Category</Link></li>
+        <li className='rounded-md mr-3'><Link to={'/'}>Home</Link></li>
+        <li className='rounded-md mr-3'><Link to={'/category'}>Category</Link></li>
 
-        <li className='btn btn-secondary text-white mr-3'><Link to={'/blogs'}>Blog</Link></li>
+        <li className='rounded-md mr-3'><Link to={'/blogs'}>Blog</Link></li>
 
 
         {
             user?.uid ?
                 <>
                     <div className='flex gap-3'>
-                        <li className='btn btn-secondary'><Link to={'/dashboard'}>Dashboard</Link></li>
-                        <li className='btn btn-secondary'><Link to={'/profile'}>Profile</Link></li>
-                        <li><button className='btn btn-primary rounded-md text-white' onClick={handleLogout}>Sign Out</button></li>
+                        <li className=''><Link to={'/dashboard'}>Dashboard</Link></li>
+                        <li className=''><Link to={'/profile'}>Profile</Link></li>
+                        <li><button className='rounded-md ' onClick={handleLogout}>Sign Out</button></li>
                     </div>
                 </>
                 :
 
                 <>
-                    <li className='btn btn-secondary text-white'><Link to={'/login'}>Login</Link></li>
-                    <li className='btn btn-secondary text-white'><Link to={'/signup'}>SignUp</Link></li>
+                    <li className=''><Link to={'/login'}>Login</Link></li>
+                    <li className=''><Link to={'/signup'}>SignUp</Link></li>
 
                 </>
 
@@ -49,7 +49,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="navbar bg-base-100 flex justify-between ">
+        <div className="navbar bg-base-300 flex justify-between ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -61,7 +61,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to={'/'} className="btn btn-secondary normal-case text-xl text-white" >Resale Phones</Link>
+                <Link to={'/'} className="normal-case text-xl " >Resale Phones</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

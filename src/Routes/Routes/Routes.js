@@ -16,6 +16,8 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 import Products from '../../Pages/Products'
 import MyProducts from '../../Pages/Dashboard/MyProducts/MyProducts'
 import Error from '../../Pages/Error';
+import Payment from '../../Pages/Dashboard/Payment/Payment';
+import DisplayError from '../../Pages/Shared/DisplayError/DisplayError';
 // import AdminRoutes from '../AdminRoutes/AdminRoutes';
 // import PrivateRoute from '../PrivateRoute/PrivateRoute/PrivateRoute';
 
@@ -61,6 +63,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
 
             {
@@ -91,6 +94,12 @@ const router = createBrowserRouter([
                 path: '/dashboard/allseller',
                 element: <AllSeller></AllSeller>
             },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/paybooking/${params.id}`)
+            },
+
 
         ]
     }
