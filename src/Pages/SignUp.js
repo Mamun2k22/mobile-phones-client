@@ -131,6 +131,7 @@ const SingUp = () => {
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
                 <div className="divider">OR</div>
+                <button className='btn btn-outline w-full '>CONTINUE WITH GOOGLE</button>
                 {/* <Google></Google> */}
 
 
