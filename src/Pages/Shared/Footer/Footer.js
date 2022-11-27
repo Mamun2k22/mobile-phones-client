@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
 
-        <div className='my-15'>
+        <div className='my-20'>
             <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
-                        <Link to="https://flowbite.com/" className="flex items-center">
-                            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8" alt="FlowBite Logo" />
+                        <Link to='/' className="flex items-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2097/2097276.png" className="mr-3 h-8" alt="Resale Phones" />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Resale Phones</span>
                         </Link>
                     </div>
@@ -18,10 +18,10 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                             <ul className="text-gray-600 dark:text-gray-400">
                                 <li class="mb-4">
-                                    <Link to="https://flowbite.com/" className="hover:underline"> Flowbite </Link>
+                                    <Link to="/" className="hover:underline"> Forum </Link>
                                 </li>
                                 <li>
-                                    <Link to="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</Link>
+                                    <Link to="/blogs" className="hover:underline">Blog</Link>
                                 </li>
                             </ul>
                         </div>
@@ -29,7 +29,7 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                             <ul className="text-gray-600 dark:text-gray-400">
                                 <li className="mb-4">
-                                    <Link to="https://github.com/themesberg/flowbite" className="hover:underline ">Github</Link>
+                                    <Link to='https://github.com/Mamun2k22' className="hover:underline ">Github</Link>
                                 </li>
                                 <li>
                                     <Link to="https://discord.gg/4eeurUVvTy" className="hover:underline">Discord</Link>
@@ -51,7 +51,7 @@ const Footer = () => {
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link to="https://flowbite.com/" className="hover:underline">Flowbite™</Link>. All Rights Reserved.
+                    <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <Link to="/" className="hover:underline">Phones™</Link>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                         <Link to="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

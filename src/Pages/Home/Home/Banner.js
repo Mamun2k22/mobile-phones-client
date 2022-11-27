@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
 
-        <section className='my-10'>
+        <section className='my-20'>
             <div className='ml-20'>
                 <div className="carousel-item relative w-full">
                     <div className='carousel-img'>
@@ -53,7 +53,7 @@ const Banner = () => {
                         </div>
 
                         <div className="absolute flex justify-start transform -translate-y-1/2 left-24 w-2/5 top-3/4">
-                            <button className="btn btn-warning mr-5"> <Link to={'/home'}>Read More</Link></button>
+                            <button className="btn btn-warning mr-5"> <Link to={'/home'}>Shop Collection</Link></button>
 
 
                         </div>
