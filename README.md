@@ -1,8 +1,6 @@
 ## Important Info for this Project
-<!-- Admin Gmail:
-mamun180037@gmail.com
-Admin Password:
-MAmu12#$ -->
+# Admin Gmail: mamun180037@gmail.com
+# Admin Password: MAmu12#$
 
 
 # Create React Project Mobile-phones
