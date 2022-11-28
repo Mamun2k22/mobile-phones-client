@@ -42,7 +42,7 @@ const SingUp = () => {
                     .then(result => {
                         const user = result.user;
                         toast.success('User Created Successfully.')
-                        navigate('/')
+
                         const userInfo = {
                             displayName: data.displayName,
                         }
@@ -71,7 +71,7 @@ const SingUp = () => {
 
     const saveUser = (displayName, email, designation, photoURL) => {
         const user = { displayName, email, designation, photoURL };
-        fetch('http://localhost:5000/users', {
+        fetch('https://mobile-phones-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -92,7 +92,7 @@ const SingUp = () => {
 
 
     const getUserToken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://mobile-phones-server.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {

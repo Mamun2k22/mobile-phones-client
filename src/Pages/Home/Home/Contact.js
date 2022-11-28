@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from '../../../assest/bg.png'
+import bg from '../../../assest/bg.jpg'
 
 const Contact = () => {
     return (

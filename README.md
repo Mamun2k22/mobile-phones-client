@@ -1,6 +1,9 @@
 ## Important Info for this Project
-# Admin Gmail: mamun180037@gmail.com
-# Admin Password: MAmu12#$
+# Admin Gmail: tisha@gmail.com
+# Admin Password: TIsh12#$
+
+### Livesite: https://mobile-phones-client.web.app/
+
 
 
 # Create React Project Mobile-phones
@@ -18,3 +21,5 @@
 11. Create Hooks useAdmin, useToken,
 12. Make Context API and JWT
 13. Create Server and Connect Database Mongodb
+
+

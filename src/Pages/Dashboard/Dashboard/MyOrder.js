@@ -17,7 +17,7 @@ const MyOrders = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            const res = await fetch(`https://mobile-phones-server.vercel.app/bookings?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('token')}`
                 }
@@ -27,7 +27,7 @@ const MyOrders = () => {
         }
     });
     const handleDelete = booking => {
-        fetch(`http://localhost:5000/booking/${booking._id}`, {
+        fetch(`https://mobile-phones-server.vercel.app/booking/${booking._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`

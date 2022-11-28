@@ -15,7 +15,7 @@ const AllBuyer = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/allseller?role=buyer')
+        axios.get('https://mobile-phones-server.vercel.app/allseller?role=Buyer')
             .then(data => {
                 const buyers = data.data;
                 setBuyers(buyers)
@@ -24,7 +24,7 @@ const AllBuyer = () => {
 
 
     const handleDeleteUser = buyer => {
-        fetch(`http://localhost:5000/user/${buyer._id}`, {
+        fetch(`https://mobile-phones-server.vercel.app/user/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`

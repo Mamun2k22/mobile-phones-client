@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             console.log(currentUser);
             if (currentUser) {
-                fetch(`http://localhost:5000/user?email=${currentUser.email}`)
+                fetch(`https://mobile-phones-server.vercel.app/user?email=${currentUser.email}`)
                     .then(res => res.json())
                     .then(data => {
                         data.uid = currentUser.uid

@@ -17,7 +17,7 @@ const AllSeller = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allseller?role=seller')
+            const res = await fetch('https://mobile-phones-server.vercel.app/allseller?role=Seller')
             const data = await res.json();
             return data;
         }
@@ -27,11 +27,11 @@ const AllSeller = () => {
 
 
     const handelMakeVerifide = id => {
-        fetch(`http://localhost:5000/allseller/${id}`, {
+        fetch(`https://mobile-phones-server.vercel.app/allseller/${id}`, {
             method: 'PUT',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('token')}`
-            }
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('token')}`
+            // }
         })
             .then(res => res.json())
             .then(data => {
@@ -44,11 +44,11 @@ const AllSeller = () => {
 
 
     const handleDeleteUser = seller => {
-        fetch(`http://localhost:5000/user/${seller._id}`, {
+        fetch(`https://mobile-phones-server.vercel.app/user/${seller._id}`, {
             method: 'DELETE',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('token')}`
-            }
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('token')}`
+            // }
         })
             .then(res => res.json())
             .then(data => {
@@ -83,7 +83,7 @@ const AllSeller = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller.displayName}</td>
                                 <td>{seller.email}</td>
-                                <td>{seller?.verified !== true && <button onClick={() => handelMakeVerifide(seller._id)} className='btn btn-xs btn-primary'>Make Verify</button>}</td>
+                                <td>{seller?.verified !== true ? <button onClick={() => handelMakeVerifide(seller._id)} className='btn btn-xs btn-primary'>Make Verify</button> : <span>verified</span>}</td>
                                 <td>{seller?.designation}</td>
                                 <td>
                                     <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>

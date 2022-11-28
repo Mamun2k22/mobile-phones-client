@@ -23,7 +23,7 @@ const SingleProducts = ({ product, setProductName }) => {
 
 
     } = product;
-    console.log(product);
+    console.log(verified);
     return (
         <div>
             <div className="card card-compact w-96  bg-base-100 shadow-xl p-5">
@@ -41,7 +41,7 @@ const SingleProducts = ({ product, setProductName }) => {
                     <div>
                         <span>
                             {
-                                verified ? <span className='flex gap-2 items-center'>Verified: <GoVerified className='text-blue-500'></GoVerified></span>
+                                verified === true ? <span className='flex gap-2 items-center'>Verified: <GoVerified className='text-blue-500'></GoVerified></span>
                                     :
                                     <span className='flex gap-2 items-center' >Unverified: <CiCircleRemove className='text-red-500 font-bold'></CiCircleRemove></span>
                             }
