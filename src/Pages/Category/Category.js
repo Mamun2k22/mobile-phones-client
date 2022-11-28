@@ -11,13 +11,13 @@ const Category = () => {
 
 
     return (
-        <div className='mt-16 gap-5'>
+        <div className='mt-16 w-11/12 mx-auto'>
             <h1 className='text-center text-4xl font-bold mb-10'>Brand Category</h1>
 
-            <div className='grid lg:grid-cols-3 mx-auto lg:ml-20 sm:ml-32 gap-5'>
+            <div className='grid lg:grid-cols-3 gap-8'>
                 {
                     catagoryName.map(catagory =>
-                        <div className="card w-96 bg-base-100 shadow-xl">
+                        <div className="card bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">
                                 <img src={catagory.img} alt="Shoes" className="rounded-xl" />
                             </figure>

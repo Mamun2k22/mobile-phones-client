@@ -31,7 +31,7 @@ const Banner = () => {
 
 
     return (
-        <div className="carousel w-full py-10">
+        <div className="carousel w-11/12 py-10 mx-auto">
             {
                 bannerData.map(banner =>
                     <BannerItem

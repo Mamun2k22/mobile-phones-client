@@ -5,6 +5,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
+import useToken from '../hooks/useToken';
 
 
 
@@ -12,13 +13,16 @@ import { AuthContext } from '../contexts/AuthProvider';
 const SingUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, setRender, setUser, googleSignIn, } = useContext(AuthContext);
-
     const googleProvider = new GoogleAuthProvider();
-
-
     const [signUpError, setSignUPError] = useState('');
+    const [createUserEmail, setCreateUserEmail] = useState('');
+    // const navigate = useNavigate()
+    const [token] = useToken(createUserEmail);
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
+    if (token) {
+        navigate('/')
+    }
 
 
     const handleSignUp = (data) => {
@@ -76,13 +80,28 @@ const SingUp = () => {
         })
             .then(res => res.json())
             .then(data => {
+                setCreateUserEmail(email);
+
                 // setAuthToken(email)
                 setUser(pred => ({ ...pred, ...user }))
                 setRender(prev => !prev)
-                navigate('/');
+
 
             })
     };
+
+
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    navigate('/');
+                }
+            })
+
+    }
 
 
     // Google Sign In
@@ -96,8 +115,6 @@ const SingUp = () => {
                 console.error('Error', error);
             })
     }
-
-
 
 
     return (

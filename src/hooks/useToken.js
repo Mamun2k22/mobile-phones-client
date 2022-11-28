@@ -1,17 +1,20 @@
-export const setAuthToken = (user) => {
-    const currentUser = {
-        email: user.email
-    }
-    fetch('http://localhost:5000/jwt', {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(currentUser)
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            localStorage.setItem("token", data.token)
-        })
+import { useEffect, useState } from "react";
+
+const useToken = email => {
+    const [token, setToken] = useState('');
+    useEffect(() => {
+        if (email) {
+            fetch(`http://localhost:5000/jwt?email=${email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.accessToken) {
+                        localStorage.setItem('accessToken', data.accessToken);
+                        setToken(data.accessToken);
+
+                    }
+                });
+        }
+    }, [email])
+    return [token];
 }
+export default useToken;
