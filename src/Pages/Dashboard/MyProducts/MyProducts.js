@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import ConfirmationModal from '../../ConfirmationModal';

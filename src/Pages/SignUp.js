@@ -1,7 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -91,17 +90,17 @@ const SingUp = () => {
     };
 
 
-    const getUserToken = email => {
-        fetch(`https://mobile-phones-server.vercel.app/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('accessToken', data.accessToken);
-                    navigate('/');
-                }
-            })
+    // const getUserToken = email => {
+    //     fetch(`https://mobile-phones-server.vercel.app/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken', data.accessToken);
+    //                 navigate('/');
+    //             }
+    //         })
 
-    }
+    // }
 
 
     // Google Sign In

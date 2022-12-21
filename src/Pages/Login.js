@@ -24,7 +24,7 @@ const Login = () => {
                 toast.success('Login Success')
                 navigate('/')
                 console.log(user);
-                setAuthToken(data.email)
+
 
 
 

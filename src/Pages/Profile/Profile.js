@@ -24,7 +24,7 @@ const Profile = () => {
                 <div className='w-24 items-center rounded-full'>
                     <span className='rounded-full'>
                         {user?.uid ?
-                            <img src={user.photoURL} alt="" />
+                            <img className='rounded-lg' src={user.photoURL} alt="" />
                             :
                             <p>No Photo</p>}
                     </span>
@@ -39,7 +39,7 @@ const Profile = () => {
             <div className='mt-5'>
                 <button
                     onClick={handelLogOut}
-                    className='w-full px-8 py-3 font-bold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100'
+                    className='w-full px-8 py-3 font-bold rounded-md bg-indigo-800 hover:bg-blue-900 hover:text-white text-gray-100'
                 >
                     Log Out
                 </button>

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -89,7 +89,7 @@ const MyOrders = () => {
 
                                     {
                                         booking.price && booking.paid &&
-                                        <span className=' '>Paid</span>
+                                        <span className='bg-emerald-700'>Paid</span>
 
                                     }
                                 </th>

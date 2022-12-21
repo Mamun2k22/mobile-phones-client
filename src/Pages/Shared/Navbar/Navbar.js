@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import background from '../../../assest/background.png'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -18,26 +19,26 @@ const Navbar = () => {
 
     const menuItems = <React.Fragment>
 
-        <li className='rounded-md mr-3'><Link to={'/'}>Home</Link></li>
-        <li className='rounded-md mr-3'><Link to={'/category'}>Category</Link></li>
+        <li className='rounded-md mr-3 text-white'><Link to={'/'}>Home</Link></li>
+        <li className='rounded-md mr-3 text-white'><Link to={'/category'}>Category</Link></li>
 
-        <li className='rounded-md mr-3'><Link to={'/blogs'}>Blog</Link></li>
+        <li className='rounded-md mr-3 text-white'><Link to={'/blogs'}>Blog</Link></li>
 
 
         {
             user?.uid ?
                 <>
                     <div className='flex gap-3'>
-                        <li className=''><Link to={'/dashboard'}>Dashboard</Link></li>
-                        <li className=''><Link to={'/profile'}>Profile</Link></li>
-                        <li><button className='rounded-md ' onClick={handleLogout}>Sign Out</button></li>
+                        <li className='text-white'><Link to={'/dashboard'}>Dashboard</Link></li>
+                        <li className='text-white'><Link to={'/profile'}>Profile</Link></li>
+                        <li><button className='rounded-md text-white ' onClick={handleLogout}>Sign Out</button></li>
                     </div>
                 </>
                 :
 
                 <>
-                    <li className=''><Link to={'/login'}>Login</Link></li>
-                    <li className=''><Link to={'/signup'}>SignUp</Link></li>
+                    <li className='text-white'><Link to={'/login'}>Login</Link></li>
+                    <li className='text-white'><Link to={'/signup'}>SignUp</Link></li>
 
                 </>
 
@@ -49,7 +50,11 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className='bg-base-300'>
+        <div style={{
+            background: `url(${background})`,
+            backgroundSize: 'cover'
+        }}
+            className=''>
             <div className="navbar flex justify-between w-11/12 mx-auto py-4 ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -62,7 +67,7 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to={'/'} className="normal-case text-xl rounded-lg p-3 bg-slate-500 text-white " >Resale Phones</Link>
+                    <Link to={'/'} className="normal-case text-xl rounded-lg p-3 bg-blue-900 text-white " >Resale Phones</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">

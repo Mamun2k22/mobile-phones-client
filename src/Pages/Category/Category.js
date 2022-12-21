@@ -11,7 +11,7 @@ const Category = () => {
 
 
     return (
-        <div className='mt-16 w-11/12 mx-auto'>
+        <div className='my-20 w-11/12 mx-auto'>
             <h1 className='text-center text-4xl font-bold mb-10'>Brand Category</h1>
 
             <div className='grid lg:grid-cols-3 gap-8'>
@@ -19,7 +19,7 @@ const Category = () => {
                     catagoryName.map(catagory =>
                         <div className="card bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">
-                                <img src={catagory.img} alt="Shoes" className="rounded-xl" />
+                                <img src={catagory.img} alt="Shoes" className="rounded-xl h-1/2 w-auto" />
                             </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">Brand Name: {catagory.name}</h2>

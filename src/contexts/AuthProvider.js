@@ -10,9 +10,9 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     // Provider Login
-    const providerLogin = (provider) => {
-        return signInWithPopup(auth, provider)
-    }
+    // const providerLogin = (provider) => {
+    //     return signInWithPopup(auth, provider)
+    // }
     // User Location observer
     const [user, setUser] = useState(null)
 

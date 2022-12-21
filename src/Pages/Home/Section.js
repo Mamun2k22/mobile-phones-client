@@ -4,7 +4,7 @@ import React from 'react';
 const Section = () => {
     return (
         <div className=''>
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-10 w-11/12 mx-auto'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 my-24 w-11/12 mx-auto'>
                 <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div className="flex justify-end px-4 pt-4">
 

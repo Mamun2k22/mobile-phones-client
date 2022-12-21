@@ -3,12 +3,12 @@ import bg from '../../../assest/bg.jpg'
 
 const Contact = () => {
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className='w-11/12 mx-auto rounded-md'>
             <section style={{
                 background: `url(${bg})`,
                 backgroundSize: 'cover'
-            }} className="my-20">
-                <div className='grid justify-items-center '>
+            }} className="my-20 rounded-md">
+                <div className='grid justify-items-center'>
                     <div className='mb-2 mt-8 '>
                         <h2 className='text-xl font-bold text-primary'>Contact Us</h2>
                     </div>
